@@ -45,7 +45,7 @@ SetHandler application/x-httpd-php
 EOF
 cp /etc/php.ini /usr/local/php7/etc/php.ini
 mkdir /usr/local/php7/etc/conf.d
-cp /etc/php.d/opcache.ini /usr/local/php7/etc/conf.d/
+mv opcache.ini /usr/local/php7/etc/conf.d/
 #make sure you can index with php and use clean urls in drupal
 touch /etc/httpd/conf.d/html.conf
 cat << EOF > /etc/httpd/conf.d/html.conf
