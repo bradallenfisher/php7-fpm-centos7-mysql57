@@ -80,4 +80,8 @@ drush dl drupal --destination=/var/www/ --drupal-project-rename=html -y
 
 cd /var/www/html
 drush site-install --db-url=mysql://root@localhost:22/test -y
+chmod -R 755 /var/www/html/sites/default/files/
+chown -R apache:apache /var/www/html/sites/default/files/
 exec bash
+
+echo "DUNZY!"
