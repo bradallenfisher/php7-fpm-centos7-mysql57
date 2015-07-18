@@ -1,4 +1,7 @@
 !#/bin/bash
+#install git
+yum install git -y
+
 # install nano
 yum install nano
 
