@@ -24,16 +24,38 @@ yum groupinstall 'Development tools' -y
 
 #add the PHP7 Repo
 touch /etc/yum.repos.d/php7-nightly.repo
-echo [zend-php7] >> /etc/yum.repos.d/php7-nightly.repo
-echo name = PHP7 nightly by Zend Technologies >> /etc/yum.repos.d/php7-nightly.repo
-echo baseurl = http://repos.zend.com/zend-server/early-access/php7/repos/centos/ >> /etc/yum.repos.d/php7-nightly.repo
-echo gpgcheck=0 >> /etc/yum.repos.d/php7-nightly.repo
+cat << EOF >/etc/yum.repos.d/php7-nightly.repo
+[zend-php7]
+name = PHP7 nightly by Zend Technologies
+baseurl = http://repos.zend.com/zend-server/early-access/php7/repos/centos/
+gpgcheck=0
+EOF
+
+# install php 7
 yum install php7-nightly -y
-systemctl restart httpd
 cp /usr/local/php7/libphp7.so /etc/httpd/modules/
 
-#make sure you can index with php
-sed -i 's/DirectoryIndex index/DirectoryIndex index.php index/g' /etc/httpd/conf/httpd.conf
+# load php into apache
+touch /etc/httpd/conf.d/php7.conf
+cat << EOF > /etc/httpd/conf.d/php7.conf
+LoadModule php7_module        /usr/lib64/httpd/modules/libphp7.so
+<FilesMatch \.php$> 
+SetHandler application/x-httpd-php
+</FilesMatch> 
+EOF
+
+#make sure you can index with php and use clean urls in drupal
+touch /etc/httpd/conf.d/html.conf
+cat << EOF > /etc/httpd/conf.d/html.conf
+<Directory "/var/www/html">    
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
+<IfModule dir_module>
+    DirectoryIndex index.php index.html
+</IfModule>
+EOF
 
 #get some dependancies... not sure bout all this yet, but it seems to work
 yum install php-pdo php-gd php-dom php-pecl-apcu php-mcrypt php-mbstring php-pdo_mysql php-cli -y
