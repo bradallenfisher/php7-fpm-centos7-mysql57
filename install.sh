@@ -43,9 +43,10 @@ LoadModule php7_module        /usr/lib64/httpd/modules/libphp7.so
 SetHandler application/x-httpd-php
 </FilesMatch> 
 EOF
+
 cp /etc/php.ini /usr/local/php7/etc/php.ini
 mkdir /usr/local/php7/etc/conf.d
-mv opcache.ini /usr/local/php7/etc/conf.d/
+cp opcache.ini /usr/local/php7/etc/conf.d/
 #make sure you can index with php and use clean urls in drupal
 touch /etc/httpd/conf.d/html.conf
 cat << EOF > /etc/httpd/conf.d/html.conf
