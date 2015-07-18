@@ -50,7 +50,7 @@ mv composer.phar /usr/local/bin/composer
 composer global require drush/drush:7.*
 
 echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >> ~/.bashrc
-source ~/.bashrc
+exec bash
 
 # install drush recipes
 drush dl drush_recipes -y
