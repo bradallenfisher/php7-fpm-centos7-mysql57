@@ -33,7 +33,7 @@ systemctl restart httpd
 cp /usr/local/php7/libphp7.so /etc/httpd/modules/
 
 #make sure you can index with php
-sed -i 's/DirectoryIndex index/DirectoryIndex index.php index/g' httpd.conf
+sed -i 's/DirectoryIndex index/DirectoryIndex index.php index/g' /etc/httpd/conf/httpd.conf
 
 #get some dependancies... not sure bout all this yet, but it seems to work
 yum install php-pdo php-gd php-dom php-pecl-apcu php-mcrypt php-mbstring php-pdo_mysql php-cli -y
@@ -54,5 +54,5 @@ exec bash
 
 # install drush recipes
 drush dl drush_recipes -y
-
+drush dl drupal --destination=/var/www/ --drupal-project-rename=html
 
