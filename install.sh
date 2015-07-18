@@ -50,7 +50,7 @@ mv composer.phar /usr/local/bin/composer
 composer global require drush/drush:7.*
 
 echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >> ~/.bashrc
-exec bash
+source ~/.bashrc
 
 # install drush recipes
 drush dl drush_recipes -y
@@ -58,3 +58,4 @@ drush dl drupal --destination=/var/www/ --drupal-project-rename=html
 
 cd /var/www/html
 drush site-install --db-url=mysql://root@localhost:22/test -y
+exec bash
