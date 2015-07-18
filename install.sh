@@ -56,3 +56,5 @@ exec bash
 drush dl drush_recipes -y
 drush dl drupal --destination=/var/www/ --drupal-project-rename=html
 
+cd /var/www/html
+drush site-install --db-url=mysql://root@localhost:22/test -y
