@@ -44,9 +44,15 @@ SetHandler application/x-httpd-php
 </FilesMatch> 
 EOF
 
+#copy the php.ini file into the loadable location
 cp /etc/php.ini /usr/local/php7/etc/php.ini
+
+#create location for loadable ini files.
 mkdir /usr/local/php7/etc/conf.d
+
+#start by adding in opcache ini
 cp opcache.ini /usr/local/php7/etc/conf.d/
+
 #make sure you can index with php and use clean urls in drupal
 touch /etc/httpd/conf.d/html.conf
 cat << EOF > /etc/httpd/conf.d/html.conf
@@ -60,7 +66,7 @@ cat << EOF > /etc/httpd/conf.d/html.conf
 </IfModule>
 EOF
 
-#get some dependancies... not sure bout all this yet, but it seems to work
+#get some dependancies... not sure bout all this yet, but it seems to allow drush to work
 yum install php-pdo php-gd php-dom php-pecl-apcu php-mcrypt php-mbstring php-pdo_mysql php-cli -y
 
 #restart and keep on
