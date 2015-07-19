@@ -23,9 +23,11 @@ yum install mysql-community-server -y
 # install some dev tools
 yum groupinstall 'Development tools' -y
 
-yum install --enablerepo=webtatic-testing php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-mbstring php70w-mcrypt php70w-pdo php70w-xml php70w-mysqlnd
+yum install --enablerepo=webtatic-testing php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-mbstring php70w-mcrypt php70w-pdo php70w-xml php70w-mysqlnd -y
 
-#todo rm /etc/httpd/conf.d/10-php.conf, /etc/httpd/conf.modules.d/php-thingy
+#todo 
+rm /etc/httpd/conf.d/php.conf -rf
+rm /etc/httpd/conf.modules.d/10-php.conf -rf
 
 # load php into apache
 touch /etc/httpd/conf.d/php7.conf
