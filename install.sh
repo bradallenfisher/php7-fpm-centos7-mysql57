@@ -1,4 +1,5 @@
-!#/bin/bash
+#/!/bin/bash
+
 #install git
 yum install git -y
 
@@ -11,7 +12,7 @@ yum install httpd -y
 # get some repos
 rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum localinstall mysql-community-release-el7-5.noarch.rpm -y
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 # get latest mysql
 wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
@@ -22,18 +23,9 @@ yum install mysql-community-server -y
 # install some dev tools
 yum groupinstall 'Development tools' -y
 
-#add the PHP7 Repo
-touch /etc/yum.repos.d/php7-nightly.repo
-cat << EOF >/etc/yum.repos.d/php7-nightly.repo
-[zend-php7]
-name = PHP7 nightly by Zend Technologies
-baseurl = http://repos.zend.com/zend-server/early-access/php7/repos/centos/
-gpgcheck=0
-EOF
+yum install --enablerepo=webtatic-testing php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-mbstring php70w-mcrypt php70w-pdo php70w-xml php70w-mysqlnd
 
-# install php 7
-yum install php7-nightly -y
-cp /usr/local/php7/libphp7.so /etc/httpd/modules/
+#todo rm /etc/httpd/conf.d/10-php.conf, /etc/httpd/conf.modules.d/php-thingy
 
 # load php into apache
 touch /etc/httpd/conf.d/php7.conf
@@ -43,15 +35,6 @@ LoadModule php7_module        /usr/lib64/httpd/modules/libphp7.so
 SetHandler application/x-httpd-php
 </FilesMatch> 
 EOF
-
-#copy the php.ini file into the loadable location
-cp /etc/php.ini /usr/local/php7/etc/php.ini
-
-#create location for loadable ini files.
-mkdir /usr/local/php7/etc/conf.d
-
-#start by adding in opcache ini
-cp opcache.ini /usr/local/php7/etc/conf.d/
 
 #make sure you can index with php and use clean urls in drupal
 touch /etc/httpd/conf.d/html.conf
@@ -65,9 +48,6 @@ cat << EOF > /etc/httpd/conf.d/html.conf
     DirectoryIndex index.php index.html
 </IfModule>
 EOF
-
-#get some dependancies... not sure bout all this yet, but it seems to allow drush to work
-yum install php-pdo php-gd php-dom php-pecl-apcu php-mcrypt php-mbstring php-pdo_mysql php-cli -y
 
 #restart and keep on
 /bin/systemctl restart  httpd.service
