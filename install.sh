@@ -57,14 +57,16 @@ yum install varnish -y
 sed -i 's/VARNISH_LISTEN_PORT=6081/VARNISH_LISTEN_PORT=80/g' /etc/varnish/varnish.params
 sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 
-systemctl enable varnish
-systemctl enable httpd
-systemctl start varnish
-systemctl start httpd
+#systemctl enable varnish
+#systemctl enable httpd
+#systemctl start varnish
+#systemctl start httpd
+service start varnish
+service start httpd
+
 
 #get drush
 curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-composer global require drush/drush:7.*
+mv composer.phar /usr/local/bin/composer
 
 echo "ON TO STEP 2...."
