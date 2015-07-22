@@ -3,9 +3,6 @@
 #install git
 yum install git -y
 
-# install nano
-yum install nano
-
 # install apache
 yum install httpd -y
 
