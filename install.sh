@@ -60,9 +60,4 @@ systemctl start varnish
 systemctl start httpd
 
 
-
-#get drush
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-
-echo "ON TO STEP 2...."
+echo "now run post-install.sh as drush user...."
