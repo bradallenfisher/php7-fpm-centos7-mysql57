@@ -1,4 +1,5 @@
 #!/bin/bash
+# run as drush user.
 
 cd $HOME
 curl -sS https://getcomposer.org/installer | php
