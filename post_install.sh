@@ -1,6 +1,15 @@
-composer global require drush/drush:7.*
-echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >> ~/.bashrc
-source ~/.bashrc
+#!/bin/bash
+
+cd $HOME
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+php /usr/local/bin/composer global require drush/drush:6.*
+# symlink into drush
+sudo ln -sf $HOME/.composer/vendor/drush/drush /usr/bin/drush
+# add to local path
+echo 'export PATH="$PATH:/usr/bin/drush"' >> $HOME/.bashrc
+# reload bashrc so drush calls can function
+source .bashrc
 
 # install drush recipes
 drush dl drush_recipes -y
