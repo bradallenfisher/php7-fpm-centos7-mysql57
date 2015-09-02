@@ -54,12 +54,11 @@ yum install varnish -y
 sed -i 's/VARNISH_LISTEN_PORT=6081/VARNISH_LISTEN_PORT=80/g' /etc/varnish/varnish.params
 sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 
-#systemctl enable varnish
-#systemctl enable httpd
-#systemctl start varnish
-#systemctl start httpd
-service start varnish
-service start httpd
+systemctl enable varnish
+systemctl enable httpd
+systemctl start varnish
+systemctl start httpd
+
 
 
 #get drush
