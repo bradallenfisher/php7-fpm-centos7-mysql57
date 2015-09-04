@@ -8,7 +8,7 @@ git clone https://github.com/bradallenfisher/php7-centos7-mysql5.6.git;cd php7-c
 
 - add below string to /etc/hosts file
 
-192.168.7.7 local.php7.dev
+192.168.19.07 local.phpng.dev
 
 # Completely experimental... DON'T USE IN PRODUCTION
 With that being said here's a one liner to get you started with this bleeding edge environment
