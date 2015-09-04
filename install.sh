@@ -56,5 +56,9 @@ systemctl enable httpd
 systemctl start varnish
 systemctl start httpd
 
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+ln -s /usr/local/bin/composer /usr/bin/composer
+composer global require drush/drush:7.*
 
 echo "now run post-install.sh as drush user...."
