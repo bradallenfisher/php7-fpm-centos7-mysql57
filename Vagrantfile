@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # run script as root
   config.vm.provision "shell",
-    path: "install.sh"
+    path: "root.sh"
     
   # run script as vagrant user
   config.vm.provision "shell",
