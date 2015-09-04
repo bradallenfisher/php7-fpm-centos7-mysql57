@@ -1,6 +1,6 @@
 # php7-centos7-mysql5.6
 
-## One liner to install php 7 and mysql 5.6 in vagrant (local machine)
+## One liner to install php 7 and mysql 5.6 in vagrant (local machine) --NOT WORKING YET>>> SOMETHING WITH CENTOS 7 AND APACHE
 
 ```bash
 git clone https://github.com/bradallenfisher/php7-centos7-mysql5.6.git;cd php7-centos7-mysql5.6; vagrant up
