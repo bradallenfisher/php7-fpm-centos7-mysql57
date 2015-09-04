@@ -22,17 +22,17 @@ yum groupinstall 'Development tools' -y
 yum install -y --enablerepo=webtatic-testing php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-mbstring php70w-mcrypt php70w-pdo php70w-xml php70w-mysqlnd
 
 #todo
-rm /etc/httpd/conf.d/php.conf -rf
-rm /etc/httpd/conf.modules.d/10-php.conf -rf
+#rm /etc/httpd/conf.d/php.conf -rf
+#rm /etc/httpd/conf.modules.d/10-php.conf -rf
 
 # load php into apache
-touch /etc/httpd/conf.d/php7.conf
-cat << EOF > /etc/httpd/conf.d/php7.conf
-LoadModule php7_module        /usr/lib64/httpd/modules/libphp7.so
-<FilesMatch \.php$>
-SetHandler application/x-httpd-php
-</FilesMatch>
-EOF
+#touch /etc/httpd/conf.d/php7.conf
+#cat << EOF > /etc/httpd/conf.d/php7.conf
+#LoadModule php7_module        /usr/lib64/httpd/modules/libphp7.so
+#<FilesMatch \.php$>
+#SetHandler application/x-httpd-php
+#</FilesMatch>
+#EOF
 #make sure you can index with php and use clean urls in drupal
 touch /etc/httpd/conf.d/html.conf
 cat << EOF > /etc/httpd/conf.d/html.conf
