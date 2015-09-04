@@ -1,8 +1,5 @@
 #/!/bin/bash
 
-#install git
-yum install git -y
-
 # install apache
 yum install httpd -y
 
