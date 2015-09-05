@@ -48,37 +48,16 @@ cat << EOF > /etc/httpd/conf.d/html.conf
 EOF
 
 # get varnish duh!
-#yum install varnish -y
-#sed -i 's/VARNISH_LISTEN_PORT=6081/VARNISH_LISTEN_PORT=80/g' /etc/varnish/varnish.params
-#sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
+rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+yum install varnish -y
+sed -i 's/VARNISH_LISTEN_PORT=6081/VARNISH_LISTEN_PORT=80/g' /etc/varnish/varnish.params
+sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 
-#systemctl enable varnish
+systemctl enable varnish
 systemctl enable httpd
-#systemctl start varnish
+systemctl start varnish
 systemctl start httpd
 
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 ln -s /usr/local/bin/composer /usr/bin/composer
-composer global require drush/drush:7.*
-
-echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> $HOME/.bashrc
-source $HOME/.bashrc
-
-# install drush recipes
-drush dl drush_recipes -y
-drush dl drush_cleanup
-drush cc drush
-
-drush dl drupal --destination=/var/www/ --drupal-project-rename=html -y
-
-cd /var/www/html
-drush site-install --db-url=mysql://root@localhost:22/test -y
-sudo chmod -R 755 /var/www/html/sites/default/files/
-sudo chown -R apache:apache /var/www/html/sites/default/files/
-
-drush cleanup -y
-drush cook d7adminux -y
-exec bash
-
-echo "DUNZY!"
