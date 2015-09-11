@@ -21,4 +21,6 @@ drush cleanup -y
 drush cook d7adminux -y
 exec bash
 
+#not on prod obviously.
+sudo systemctl stop firewalld.service
 echo "DUNZY!"
