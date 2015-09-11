@@ -1,7 +1,7 @@
 #/!/bin/bash
 
 # install apache
-yum install httpd -y
+yum install nano wget curl vim git httpd -y
 
 # get some repos
 rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
