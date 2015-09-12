@@ -13,14 +13,13 @@ sudo chown -R vagrant:vagrant /var/www/
 drush dl drupal --destination=/var/www/ --drupal-project-rename=html -y
 
 cd /var/www/html
-drush site-install --db-url=mysql://root@localhost:22/test -y
+drush site-install --db-url=mysql://root@localhost:22/test --account-pass=admin -y
+
 sudo chmod -R 755 /var/www/html/sites/default/files/
 sudo chown -R apache:apache /var/www/html/sites/default/files/
 
 drush cleanup -y
 drush cook d7adminux -y
-exec bash
+drush cook d7adminux -y
 
-#not on prod obviously.
-sudo systemctl stop firewalld.service
 echo "DUNZY!"
