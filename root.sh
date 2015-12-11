@@ -11,7 +11,8 @@ rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 # get latest mysql
 wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 yum localinstall mysql-community-release-el7-5.noarch.rpm -y
-yum update -y
+yum update -y 
+#hi
 yum install mysql-community-server -y
 systemctl enable mysqld.service
 /bin/systemctl start  mysqld.service
