@@ -9,13 +9,13 @@ wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 rpm -Uvh remi-release-7.rpm
 
 # get latest mysql
-yum install http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-yum install mysql mysql-server -y
+yum install -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm 
+yum install -y mysql mysql-server
 systemctl enable mysqld.service
 /bin/systemctl start  mysqld.service
 
 # install some dev tools
-yum groupinstall 'Development tools' -y
+yum groupinstall -y 'Development tools'
 
 yum install -y --enablerepo=remi-php70 php php-apcu php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
