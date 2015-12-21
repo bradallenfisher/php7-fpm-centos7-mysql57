@@ -20,5 +20,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell",
     path: "post-install.sh",
     privileged: FALSE
+  
+  # virtual box name
+  config.vm.provider "virtualbox" do |v|
+    v.name = "centos-7"
+    v.memory = 4096
+    v.cpus = 2
 
 end
