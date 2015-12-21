@@ -1,4 +1,4 @@
-# php7-fpm-apache-2.4
+# php7-fpm-centos7-mysql5.6
 
 ## Vagrant
 ```bash
