@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # centos 6.5
   config.vm.box = "bradallenfisher/centos7"
   # ip address
-  config.vm.network "private_network", ip: "192.168.19.07"
+  config.vm.network "private_network", ip: "192.168.7.7"
   # host name
   config.vm.hostname = "local.php7.dev"
 
