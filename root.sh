@@ -19,7 +19,7 @@ yum groupinstall 'Development tools' -y
 
 yum install -y --enablerepo=remi-php70 php php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
-#systemctl enable varnish
+#systemctl enable httpd
 systemctl enable httpd
-#systemctl start varnish
+#systemctl start httpd
 systemctl start httpd
