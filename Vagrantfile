@@ -5,20 +5,26 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # centos 7
+  # centos 6.5
   config.vm.box = "bradallenfisher/centos7"
-  
   # ip address
-  config.vm.network "private_network", ip: "192.168.19.78"
-  
+  config.vm.network "private_network", ip: "192.168.19.07"
   # host name
-  config.vm.hostname = "local.centos-7.dev"
-  
+  config.vm.hostname = "local.phpng.dev"
+
+  # run script as root
+  config.vm.provision "shell",
+    path: "root.sh"
+    
+  # run script as vagrant user
+  config.vm.provision "shell",
+    path: "post-install.sh",
+    privileged: FALSE
+
   # virtual box name
   config.vm.provider "virtualbox" do |v|
     v.name = "centos-7"
     v.memory = 4096
     v.cpus = 2
   end
-
 end
