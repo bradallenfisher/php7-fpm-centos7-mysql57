@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ip address
   config.vm.network "private_network", ip: "192.168.19.07"
   # host name
-  config.vm.hostname = "local.phpng.dev"
+  config.vm.hostname = "local.php7.dev"
 
   # run script as root
   config.vm.provision "shell",
@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
-    v.name = "php-7"
+    v.name = "php7"
     v.memory = 4096
     v.cpus = 2
   end
