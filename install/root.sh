@@ -13,9 +13,7 @@ yum install -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 yum install -y mysql mysql-server
 systemctl enable mysqld.service
 /bin/systemctl start  mysqld.service
-
-# install some dev tools
-yum groupinstall 'Development tools' -y
+yum update -y
 
 yum install -y --enablerepo=remi-php70 php php-apcu php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
