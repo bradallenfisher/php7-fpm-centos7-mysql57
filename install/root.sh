@@ -15,7 +15,7 @@ systemctl enable mysqld.service
 /bin/systemctl start  mysqld.service
 
 # install some dev tools
-yum groupinstall -y 'Development tools'
+yum groupinstall 'Development tools' -y
 
 yum install -y --enablerepo=remi-php70 php php-apcu php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
