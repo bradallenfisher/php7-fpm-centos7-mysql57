@@ -14,16 +14,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # run script as root
   config.vm.provision "shell",
-    path: "root.sh"
-    
-  # run script as vagrant user
-  config.vm.provision "shell",
-    path: "post-install.sh",
-    privileged: FALSE
+    path: "install/install.sh"
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
-    v.name = "centos-7"
+    v.name = "php-7"
     v.memory = 4096
     v.cpus = 2
   end
