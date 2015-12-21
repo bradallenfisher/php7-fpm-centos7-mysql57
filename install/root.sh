@@ -19,11 +19,6 @@ yum groupinstall 'Development tools' -y
 
 yum install -y --enablerepo=remi-php70 php php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
-#systemctl enable httpd
-systemctl enable httpd
-#systemctl start httpd
-systemctl start httpd
-
 # PHP
 # The first pool
 cat /vagrant/php/www.conf > /etc/php-fpm.d/www.conf
@@ -79,16 +74,13 @@ sudo systemctl stop firewalld.service
 # Start all the services we use.
 systemctl start php-fpm.service
 systemctl start  mysqld.service
-# don't start httpd here since there is no .htaccess file yet
 
-# Install Drush globally.
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-ln -s /usr/local/bin/composer /usr/bin/composer
 
-# Install node/grunt
-curl --silent --location https://rpm.nodesource.com/setup | bash -
-yum -y install nodejs
-yum -y install gcc-c++ make
-yum -y groupinstall 'Development Tools'
-npm install --global grunt-cli
+#echo <IfModule proxy_module> >> /etc/httpd/conf.d/
+##  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/var/www/html/$1
+#</IfModule>
+
+#systemctl enable httpd
+systemctl enable httpd
+#systemctl start httpd
+systemctl start httpd
