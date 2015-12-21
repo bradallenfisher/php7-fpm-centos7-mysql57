@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # php-fpm-apache-2.4
 # Before running this ...
 
@@ -42,4 +41,3 @@ yum install git -y;git clone https://github.com/bradallenfisher/php7-centos7-mys
 - run the post-install.sh script as the new user
 
 dunzy!
->>>>>>> a54b4aa696a0e3e7c619e8ff034384dd31d654d4
