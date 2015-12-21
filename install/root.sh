@@ -75,12 +75,9 @@ sudo systemctl stop firewalld.service
 systemctl start php-fpm.service
 systemctl start  mysqld.service
 
-
-#echo <IfModule proxy_module> >> /etc/httpd/conf.d/
-##  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/var/www/html/$1
-#</IfModule>
-
 #systemctl enable httpd
 systemctl enable httpd
 #systemctl start httpd
 systemctl start httpd
+
+echo "<?php phpinfo();?>" > /var/www/html/index.php
