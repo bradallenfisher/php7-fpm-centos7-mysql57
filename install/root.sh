@@ -17,7 +17,7 @@ systemctl enable mysqld.service
 # install some dev tools
 yum groupinstall 'Development tools' -y
 
-yum install -y --enablerepo=remi-php70 php php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
+yum install -y --enablerepo=remi-php70 php php-apcu php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
 # PHP
 # The first pool
