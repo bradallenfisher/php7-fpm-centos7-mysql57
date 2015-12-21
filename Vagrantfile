@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # run script as root
   config.vm.provision "shell",
-    path: "install/install.sh"
+    path: "install/root.sh"
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
