@@ -1,7 +1,7 @@
 #/!/bin/bash
 
 # install apache
-yum install httpd -y
+yum install nano wget httpd -y
 
 # get some repos
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
