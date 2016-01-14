@@ -79,3 +79,7 @@ systemctl enable httpd
 systemctl start httpd
 
 echo "<?php phpinfo();?>" > /var/www/html/index.php
+
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+ln -s /usr/local/bin/composer /usr/bin/composer
