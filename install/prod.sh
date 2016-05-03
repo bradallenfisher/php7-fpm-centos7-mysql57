@@ -33,7 +33,7 @@ sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 cat php/www.conf > /etc/php-fpm.d/www.conf
 
 #opcache settings
-cat php/opcache.ini > /etc/php.d/opcache.ini
+cat php/opcache.ini > /etc/php.d/10-opcache.ini
 
 #disable mod_php
 cat php/php.conf > /etc/httpd/conf.d/php.conf
