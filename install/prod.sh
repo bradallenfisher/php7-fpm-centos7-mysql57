@@ -15,7 +15,7 @@ systemctl enable mysqld.service
 service mysqld start
 yum update -y
 
-# install php
+# install php 7.1
 yum install yum-utils -y
 yum-config-manager --enable remi-php71 -y
 yum install -y --enablerepo=remi-php70 php php-apcu php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
