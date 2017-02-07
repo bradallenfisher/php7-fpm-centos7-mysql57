@@ -18,8 +18,8 @@ yum update -y
 yum install -y --enablerepo=remi-php70 php php-apcu php-fpm php-opcache php-cli php-common php-gd php-mbstring php-mcrypt php-pdo php-xml php-mysqlnd
 
 # varnish
-rpm --nosignature -i https://repo.varnish-cache.org/redhat/varnish-4.0.el7.rpm
-yum install -y varnish
+#rpm --nosignature -i https://repo.varnish-cache.org/redhat/varnish-4.0.el7.rpm
+#yum install -y varnish
 
 # VARNISH
 #cat varnish/default.vcl > /etc/varnish/default.vcl
