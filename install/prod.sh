@@ -22,11 +22,11 @@ rpm --nosignature -i https://repo.varnish-cache.org/redhat/varnish-4.0.el7.rpm
 yum install -y varnish
 
 # VARNISH
-cat varnish/default.vcl > /etc/varnish/default.vcl
-cat varnish/varnish.params > /etc/varnish/varnish.params
+#cat varnish/default.vcl > /etc/varnish/default.vcl
+#cat varnish/varnish.params > /etc/varnish/varnish.params
 
 # Varnish can listen
-sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
+#sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 
 # PHP
 # The first pool
@@ -90,5 +90,3 @@ systemctl start varnish.service
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 ln -s /usr/local/bin/composer /usr/bin/composer
-
-echo "<?php phpinfo();?>" > /var/www/html/index.php
